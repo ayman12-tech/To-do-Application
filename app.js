@@ -15,13 +15,29 @@ function addTodo(){
     delBtn.appendChild(delText)
     li.appendChild(delBtn)
     
+    //create edit button
+    var editBtn=document.createElement("button")
+    var editText=document.createTextNode("EDIT")
+    editBtn.setAttribute("onclick","editItem(this)")
+    editBtn.appendChild(editText)
+
     list.appendChild(li)
+    li.appendChild(editBtn)
 
     todo_item.value=""
     console.log(li)
 }
-
+function editItem(e)
+{
+    var val=e.parentNode.firstChild.nodeValue;
+    var editValue=prompt("Enter the edit value",val)
+    e.parentNode.firstChild.nodeValue=editValue
+}
 function deleteItem(e)
 {
     e.parentNode.remove()
+}
+function deleteALL()
+{
+    list.innerHTML=""
 }
